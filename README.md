@@ -5,7 +5,6 @@ chinahrt国培网题库采集及辅助答题
  
 # 项目依赖 
 .netcore 3.0  
-MS SQL Server
 
 # 使用方法
 ## 1、克隆项目到本机  
@@ -17,8 +16,8 @@ MS SQL Server
 dotnet restore
 ```
 
-## 3、配置数据库  
-打开项目文件 `appsettings.json` 修改 `ConnectionString` 配置为本机MSSQL数据库
+## 3、配置数据库（可选）  
+打开项目文件 `appsettings.json` 修改 `ConnectionString` 配置Sqlite数据文件路径
 
 ## 4、启动服务端
 ```
