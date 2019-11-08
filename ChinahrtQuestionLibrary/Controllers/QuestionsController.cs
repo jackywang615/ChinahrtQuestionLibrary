@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ChinahrtQuestionLibrary.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChinahrtQuestionLibrary.Controllers
 {
@@ -28,7 +29,7 @@ namespace ChinahrtQuestionLibrary.Controllers
             var m_title = titleReg.Match(title);
             var t = m_title.Groups["title"].Value;
 
-            var results = context.Questions.Where(x => x.Title == t);
+            var results = context.Questions.Include(x => x.Answers).Where(x => x.Title == t);
             foreach (Question q in results)
             {
                 if (q.Answers.Any(x => x.IsRight))

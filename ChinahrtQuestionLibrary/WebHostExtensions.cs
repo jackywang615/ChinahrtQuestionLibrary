@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Data.SqlClient;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +27,7 @@ namespace ChinahrtQuestionLibrary
                 {
                     logger.LogInformation($"Migrating database associated with context {typeof(TContext).Name}");
 
-                    var retry = Policy.Handle<SqlException>()
+                    var retry = Policy.Handle<SqliteException>()
                         .WaitAndRetry(new TimeSpan[]
                         {
                             TimeSpan.FromSeconds(5),
@@ -37,9 +37,6 @@ namespace ChinahrtQuestionLibrary
 
                     retry.Execute(() =>
                     {
-                        //if the sql server container is not created on run docker compose this
-                        //migration can't fail for network related exception. The retry options for DbContext only 
-                        //apply to transient exceptions.
                         logger.LogInformation(a.ToString());
 
                         context.Database.Migrate();
