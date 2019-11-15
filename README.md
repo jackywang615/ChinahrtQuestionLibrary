@@ -16,8 +16,8 @@ chinahrt国培网题库采集及辅助答题
 dotnet restore
 ```
 
-## 3、配置数据库（可选）  
-打开项目文件 `appsettings.json` 修改 `ConnectionString` 配置Sqlite数据文件路径
+## 3、配置数据库  
+打开项目文件 `appsettings.json` 修改 `ConnectionString` 配置SQL Server数据库连接字符串
 
 ## 4、启动服务端
 ```
