@@ -9,7 +9,7 @@ namespace ChinahrtQuestionLibrary.Models
 
         public string Title { get; set; }
 
-        public List<Answer> Answers { get; set; } = new List<Answer>();
+        public virtual List<Answer> Answers { get; set; } = new List<Answer>();
     }
 
     public class Answer

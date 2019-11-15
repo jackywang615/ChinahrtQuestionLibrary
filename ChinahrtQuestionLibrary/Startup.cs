@@ -30,11 +30,11 @@ namespace ChinahrtQuestionLibrary
             services.AddControllers();
             services.AddDbContext<ChinahrtContext>(options =>
             {
-                options.UseSqlite(Configuration["ConnectionString"], options =>
+                options.UseSqlServer(Configuration["ConnectionString"], options =>
                 {
                     var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
                     options.MigrationsAssembly(migrationsAssembly);
-                });
+                }).UseLazyLoadingProxies();
             });
 
             services.AddCors(
