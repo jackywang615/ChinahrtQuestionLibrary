@@ -25,7 +25,7 @@ namespace ChinahrtQuestionLibrary.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Question>> Get([FromQuery]string title)
         {
-            Regex titleReg = new Regex(@"(?:\d+\.)?(?<title>.*)(?:（\d+\.\d分）)?");
+            Regex titleReg = new Regex(@"(?:\d+\.)(?<title>.+)(?:（\d+\.\d分）)");
             var m_title = titleReg.Match(title);
             var t = m_title.Groups["title"].Value;
 
