@@ -15,12 +15,15 @@
     'use strict';
 
     function uploadResult() {
+        var data = [];
         $('.question-y').each(function (i, e) {
             var title = $(e).find('h3').text();
             var value = $(e).find('span').text();
-            var result = { 'title': title, 'value': value };
-            $.post('http://127.0.0.1:8080/api/questions', result);
+            var item = { 'title': title, 'value': value };
+            data.push(item);
         });
+
+        $.post('http://127.0.0.1:8080/api/questions', {'data': data});
     }
 
     function queryResult() {
